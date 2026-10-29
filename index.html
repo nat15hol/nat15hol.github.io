@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Henrik Oldehed — Data Engineer & Backend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D1117;
+    --bg-subtle: #161B22;
+    --bg-hover: #1C2128;
+    --border: #21262D;
+    --text: #E6EDF3;
+    --text-muted: #7D8590;
+    --accent: #58A6FF;
+    --accent-dim: #1F3A5F;
+    --green: #3FB950;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+
+  /* Header */
+  header {
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 40px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--green);
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .tagline {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 52ch;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s;
+  }
+
+  .links a:hover { color: #a5c8ff; }
+
+  .links a svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  /* Stack */
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+
+  /* Section */
+  section { margin-bottom: 48px; }
+
+  h2 {
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* Projects */
+  .project {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 12px;
+    background: var(--bg-subtle);
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .project:hover {
+    border-color: var(--accent-dim);
+    background: var(--bg-hover);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .project-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .project-title:hover { color: var(--accent); }
+
+  .project-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+
+  .project-link:hover { color: #a5c8ff; }
+
+  .project-link svg { width: 13px; height: 13px; }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 60ch;
+    margin-bottom: 14px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+
+  /* Experience */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-role {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .exp-org {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .exp-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: right;
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 540px) {
+    .project-header { flex-direction: column; }
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-date { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <p class="eyebrow">// available for new roles</p>
+    <h1>Henrik Oldehed</h1>
+    <p class="tagline">Data engineer and backend developer building pipelines and systems where data, definitions, and requirements evolve over time. Background in mathematics and mathematical statistics.</p>
+    <div class="links">
+      <a href="https://github.com/nat15hol" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        github.com/nat15hol
+      </a>
+      <a href="https://www.linkedin.com/in/henrikoldehed" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+        linkedin.com/in/henrikoldehed
+      </a>
+    </div>
+    <div class="stack-row">
+      <span class="tag">Python</span>
+      <span class="tag">SQL</span>
+      <span class="tag">C#/.NET</span>
+      <span class="tag">Apache Airflow</span>
+      <span class="tag">dbt</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Docker</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-title">Public Transit Data Pipeline</span>
+        <a class="project-link" href="https://github.com/nat15hol" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <p class="project-desc">End-to-end pipeline ingesting real-time public transit positions in Skåne via Trafiklab's GTFS-RT API. Automated with Airflow every two minutes, stored in PostgreSQL with dbt following the medallion architecture, and exposed through FastAPI with an interactive dashboard.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Airflow</span>
+        <span class="project-tag">dbt</span>
+        <span class="project-tag">PostgreSQL</span>
+        <span class="project-tag">FastAPI</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-title">Maintenance Prioritization Platform</span>
+        <a class="project-link" href="https://github.com/nat15hol" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <p class="project-desc">Full-stack system for maintenance prioritization built independently from roadmap to deployment. C# pipeline for CSV telemetry with schema validation, a transparent rule-based prioritization model, and a REST API with JWT and role-based access control.</p>
+      <div class="project-tags">
+        <span class="project-tag">C#/.NET</span>
+        <span class="project-tag">REST API</span>
+        <span class="project-tag">JWT</span>
+        <span class="project-tag">SQL</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-title">AI Assistant for Sales Analysis</span>
+        <a class="project-link" href="https://github.com/nat15hol" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <p class="project-desc">RAG-based application combining semantic search across PDF documents with sales analytics. Implemented chunking, cross-page content handling, and page references using SentenceTransformers and FAISS, linked to a two-step LLM pipeline for KPI extraction and recommendations.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">RAG</span>
+        <span class="project-tag">FAISS</span>
+        <span class="project-tag">LLM</span>
+        <span class="project-tag">Plotly</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-title">Travel Planning Web Platform</span>
+        <a class="project-link" href="https://nat15hol.github.io/projekt" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>
+          Live
+        </a>
+      </div>
+      <p class="project-desc">Frontend work in a team project for a travel planning service. Built registration, login, account page, and favorites feature using React and localStorage. Set up GitHub Actions deployment to GitHub Pages with a feature-branch workflow.</p>
+      <div class="project-tags">
+        <span class="project-tag">React</span>
+        <span class="project-tag">JavaScript</span>
+        <span class="project-tag">GitHub Actions</span>
+        <span class="project-tag">GitHub Pages</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">Data Engineer</div>
+        <div class="exp-org">Region Skåne</div>
+      </div>
+      <div class="exp-date">Oct 2025 – Jan 2026</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">E-commerce Associate</div>
+        <div class="exp-org">Erikshjälpen</div>
+      </div>
+      <div class="exp-date">Jun 2025 – Sep 2025</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">Programming & AI — Vocational</div>
+        <div class="exp-org">Lexicon</div>
+      </div>
+      <div class="exp-date">2026 – 2027</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">BSc Mathematics</div>
+        <div class="exp-org">Lund University</div>
+      </div>
+      <div class="exp-date">2021</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Henrik Oldehed · Malmö, Sweden · <a href="https://github.com/nat15hol" style="color: var(--accent); text-decoration: none;">github.com/nat15hol</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
